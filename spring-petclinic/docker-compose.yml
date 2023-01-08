@@ -1,0 +1,23 @@
+version: '3.5'
+services:
+  petclinic:
+    image: petc:local
+    env_file: myapp.env
+    ports:
+      - 8080:8080
+    networks:
+      - mynet
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql
+    env_file: mysql.env
+    ports:
+      - 3306:3306
+    volumes:
+      - $PWD/petdata:/var/lib/mysql
+      - $PWD/mysql_config:/etc/mysql/conf.d
+    networks:
+      - mynet
+networks:
+  mynet:
