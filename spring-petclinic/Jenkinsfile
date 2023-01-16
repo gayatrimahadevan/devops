@@ -14,8 +14,8 @@ pipeline {
     }
     stage('Build'){
       steps {
-        sh "echo $PWD"
-        sh "mvn --version"
+        sh "cd ./spring-petclinic"
+        sh "$pwd"
         sh "mvn clean package -DSkipTests=true"
         archive 'target/*.jar'
       }
