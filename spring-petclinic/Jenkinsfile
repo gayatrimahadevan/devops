@@ -1,0 +1,15 @@
+pipeline {
+  agant any {
+    tools {
+      maven "Maven 3.8.7"
+    }
+  }
+  stages{
+    stage('Build'){
+      steps {
+        sh "mvn clean package -DSkipTests=true"
+        archive 'target/*.jar'
+      }
+    }
+  }
+}
