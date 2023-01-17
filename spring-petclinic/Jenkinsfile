@@ -12,6 +12,16 @@ pipeline {
                 '''
        }
     }
+    stage('Sonar Analysis'){
+      steps {
+        withSonarQubeEnv('localsonar'){
+          sh '''
+            mvn clean verify sonar:sonar \
+            -Dsonar.projectKey=mypetclinic 
+          '''
+        }
+      }
+    }
     stage('Build'){
       steps {                
         sh "mvn clean package -DSkipTests=true -f $WORKSPACE/spring-petclinic/pom.xml"
