@@ -20,6 +20,11 @@ pipeline {
             -Dsonar.projectKey=mypetclinic -f $WORKSPACE/spring-petclinic/pom.xml
           '''
         }
+        timeout(time: 2, unit: 'MINUTES') {
+          script {
+            waitForQualityGate abortPipeline: true
+          }
+        }
       }
     }
     stage('Build'){
