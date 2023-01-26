@@ -3,6 +3,8 @@
 #### Install Docker
 ```
 sudo apt-get update
+```
+```
  sudo apt-get install \
     ca-certificates \
     curl \
@@ -24,7 +26,7 @@ echo \
 sudo apt-get update
 ```
 ```
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
 ```
 ```
 sudo usermod -aG docker ${USER}
@@ -35,7 +37,7 @@ sudo apt  install docker-compose -y
 ```
 #### Install network tools
 ```
-sudo apt install net-tools
+sudo apt install net-tools -y
 ```
 #### Install Java 17
 ```
@@ -58,9 +60,7 @@ java -version
 
 #### Build docker image
 ```
-Clone git repo
-
-Copy key files to .ssh
+Copy gk (key file) to .ssh
 ```
 ```
 chmod 400 gk
