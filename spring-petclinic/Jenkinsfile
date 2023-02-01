@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build Image'){
       steps {                
-        sh "docker build . -t petc:local -f $WORKSPACE/spring-petclinic/Dockerfile"
+        sh "docker build $WORKSPACE/spring-petclinic -t petc:local -f $WORKSPACE/spring-petclinic/Dockerfile"
       }
     }
   }
