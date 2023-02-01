@@ -5,5 +5,4 @@ pipeline {
         sh "docker build . -t petc:local -f $WORKSPACE/spring-petclinic/Dockerfile"
       }
     }
-  }
 }
