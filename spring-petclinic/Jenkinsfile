@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    AWS_ACCOUNT_ID="023812455170"
+    AWS_ACCOUNT_ID="688164270212"
     AWS_DEFAULT_REGION="us-east-1"	
     IMAGE_REPO_NAME="chitti"
     IMAGE_TAG="${env.BUILD_ID}"
@@ -19,13 +19,13 @@ pipeline {
     }
     // Uploading Docker images into AWS ECR
     stage('Pushing to ECR') {
-     steps{  
-         script {
-			docker.withRegistry("https://" + REPOSITORY_URI, "ecr:${AWS_DEFAULT_REGION}:" + registryCredential) {
-                    	dockerImage.push()
-                	}
-         }
+      steps{  
+        script {
+          docker.withRegistry("https://" + REPOSITORY_URI, "ecr:${AWS_DEFAULT_REGION}:" + registryCredential) {
+          dockerImage.push()
+          }
         }
       }
+    }
   }
 }
