@@ -1,5 +1,5 @@
 # Steps to run spring-boot Petclinic application
-### Environment Setup
+#### Environment Setup
 #### Install Docker
 ```
 sudo apt-get update
