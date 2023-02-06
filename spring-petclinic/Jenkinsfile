@@ -9,11 +9,17 @@ pipeline {
             mvn clean verify sonar:sonar \
             -Dsonar.projectKey=petclinic -f $WORKSPACE/spring-petclinic/pom.xml
           '''
+        }        
+      }
+    }
+    stage('Sonar Quality Gate'){
+      steps{
+        timeout(time: 3, unit: 'MINUTES') {
+          script {
+            waitForQualityGate abortPipeline: true
+          }
         }
-        timeout(time: 2, unit: 'MINUTES') {
-           waitForQualityGate abortPipeline: true
-        }
-      } 
-    }    
+      }
+    }
   }
 }
