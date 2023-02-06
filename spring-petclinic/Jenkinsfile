@@ -1,8 +1,5 @@
 pipeline {
-  agent any
-  tools {
-    maven 'MAVEN'
-  }
+  agent any  
   stages {
     stage('Sonar Analysis'){
       steps {
