@@ -1,5 +1,13 @@
 pipeline {
-  agent any  
+  agent any
+  stage ('Initialize') {
+       steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+       }
+    }
   stages {
     stage('Sonar Analysis'){
       steps {
@@ -14,7 +22,7 @@ pipeline {
     }
     stage('Sonar Quality Gate'){
       steps{
-        timeout(time: 5, unit: 'MINUTES') {
+        timeout(time: 3, unit: 'MINUTES') {
           script {
             waitForQualityGate abortPipeline: true
           }
