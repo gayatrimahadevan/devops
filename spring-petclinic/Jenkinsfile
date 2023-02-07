@@ -1,6 +1,7 @@
 pipeline {
-  agent any
-  stage ('Initialize') {
+  agent any  
+  stages {
+    stage ('Initialize') {
        steps {
                 sh '''
                     echo "PATH = ${PATH}"
@@ -8,7 +9,6 @@ pipeline {
                 '''
        }
     }
-  stages {
     stage('Sonar Analysis'){
       steps {
         withSonarQubeEnv('localsonar'){
