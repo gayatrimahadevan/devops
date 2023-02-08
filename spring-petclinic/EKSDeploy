@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    environment {
+        KUBECONFIG = "/tmp/kubeconfig"
+        CLUSTER_NAME = "demo"
+        NAMESPACE = "eks-petclinic-app"
+    }
+    stages {        
+        stage('Configure kubectl') {
+            steps {
+                sh "aws eks --region us-east-1 update-kubeconfig --name $CLUSTER_NAME --kubeconfig $KUBECONFIG"
+                sh "kubectl config use-context $CLUSTER_NAME --kubeconfig=$KUBECONFIG"
+            }
+        }
+        stage('Create namespace') {
+            steps {
+                sh "kubectl create namespace $NAMESPACE --kubeconfig=$KUBECONFIG"
+            }
+        }
+        stage('Deploy application') {
+            steps {
+                sh "kubectl apply -f kubernetes/ --kubeconfig=$KUBECONFIG"
+            }
+        }
+    }
+}
