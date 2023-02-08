@@ -8,8 +8,7 @@ pipeline {
     stages {        
         stage('Configure kubectl') {
             steps {
-                sh "aws eks --region us-east-1 update-kubeconfig --name $CLUSTER_NAME --kubeconfig $KUBECONFIG"
-                sh "kubectl config use-context $CLUSTER_NAME --kubeconfig=$KUBECONFIG"
+                sh "aws eks --region us-east-1 update-kubeconfig --name $CLUSTER_NAME --kubeconfig $KUBECONFIG"                
             }
         }
         stage('Create namespace') {
