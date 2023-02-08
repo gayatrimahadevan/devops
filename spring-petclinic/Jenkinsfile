@@ -1,12 +1,12 @@
 pipeline {
   agent any
   environment {
-    AWS_ACCOUNT_ID="142038508472"
+    AWS_ACCOUNT_ID="801831383994"
     AWS_DEFAULT_REGION="us-east-1"
     IMAGE_REPO_NAME="chitti"
     IMAGE_TAG="${env.BUILD_ID}"
     REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
-		registryCredential = "ecr-aws"
+    registryCredential = "ecr-aws"
   }
   stages {
     stage('Sonar Analysis'){
