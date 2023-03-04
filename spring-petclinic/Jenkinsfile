@@ -14,7 +14,7 @@ pipeline {
           sh '''
            echo ${WORKSPACE}
             mvn clean verify sonar:sonar \
-            -Dsonar.projectKey=petclinic -f /home/ubuntu/aws-agent/workspace/PetclinicBuildJob/spring-petclinic/pom.xml
+            -Dsonar.projectKey=petclinic
           '''
         }        
       }
