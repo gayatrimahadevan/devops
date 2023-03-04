@@ -12,7 +12,7 @@ pipeline {
       steps {
         withSonarQubeEnv('localsonar'){
           sh '''
-           echo $PATH
+           echo $WORKSPACE
             mvn clean verify sonar:sonar \
             -Dsonar.projectKey=petclinic -f $WORKSPACE/spring-petclinic/pom.xml
           '''
