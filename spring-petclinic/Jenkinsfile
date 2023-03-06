@@ -12,7 +12,7 @@ pipeline {
       steps {
         withSonarQubeEnv('localsonar'){
           sh '''
-           echo ${pwd}
+           echo $pwd
             mvn clean verify sonar:sonar \
             -Dsonar.projectKey=petclinic -f ./spring-petclinic/pom.xml
           '''
@@ -31,7 +31,7 @@ pipeline {
     stage('Build Image'){
       steps {     
         script {
-          dockerImage = docker.build("${IMAGE_REPO_NAME}:${IMAGE_TAG}","${WORKSPACE}/spring-petclinic/")
+          dockerImage = docker.build("${IMAGE_REPO_NAME}:${IMAGE_TAG}","./spring-petclinic/")
         }
       }
     }
