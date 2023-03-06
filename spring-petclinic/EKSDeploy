@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Deploy application') {
             steps {
-                sh "kubectl apply -f $WORKSPACE/spring-petclinic/kubernetes/ --kubeconfig=$KUBECONFIG"
+                sh "kubectl apply -f ./spring-petclinic/kubernetes/ --kubeconfig=$KUBECONFIG"
             }
         }
     }
