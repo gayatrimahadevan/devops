@@ -27,7 +27,7 @@ spec:
                 - arm64
       containers:
       - name: petclinic
-        image: 368198698309.dkr.ecr.us-east-1.amazonaws.com/chitti:10
+        image: 537160833337.dkr.ecr.us-east-1.amazonaws.com/chitti:7
         ports:
         - name: http
           containerPort: 80
