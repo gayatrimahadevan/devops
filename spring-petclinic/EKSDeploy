@@ -3,7 +3,7 @@ pipeline {
     environment {
         KUBECONFIG = "/tmp/kubeconfig"
         CLUSTER_NAME = "demo"
-        NAMESPACE = "eks-petclinic-app"
+        NAMESPACE = "eks-petclinic"
     }
     stages {        
         stage('Configure kubectl') {
